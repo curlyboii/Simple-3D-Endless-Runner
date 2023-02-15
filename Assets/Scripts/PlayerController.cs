@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     public float jumpForce; // force player jump
     bool canJump; // can player jump?
+    public float gravity;
+    Vector3 moveVector = Vector3.zero;
 
     // called when start a game
     private void Awake()
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // we need to check touching on our screen
         if (Input.GetMouseButton(0) && canJump) // left mouse button AND we can jump?
@@ -31,7 +33,8 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
 
-        
+
+
         }
 
 
