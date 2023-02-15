@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,12 +33,7 @@ public class PlayerController : MonoBehaviour
             // Jump when we press\touch
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
-
-
-
         }
-
-
 
     }
 
@@ -60,6 +56,15 @@ public class PlayerController : MonoBehaviour
 
             canJump = false;
 
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // if we colliding with enemy or not
+        if (other.gameObject.tag == "Obstacle")
+        {
+            SceneManager.LoadScene("Scene0"); // when we touch obstacle, scene reloaded
         }
     }
 }
